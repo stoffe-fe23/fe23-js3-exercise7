@@ -27,9 +27,10 @@ export const reduxCalcSlice = createSlice({
     name: "calculator",
     initialState,
     reducers: {
-        // Concatenate the number input by the user, as a string, as number buttons are pressed. 
+        // Concatenate the number input by the user, as a string (as number buttons are pressed). 
         incNextValue: (state, action) => {
             let nextVal = state.nextValue;
+            // Remove initial value when starting to type numbers
             if (nextVal == "0") {
                 nextVal = "";
             }
@@ -56,7 +57,11 @@ export const reduxCalcSlice = createSlice({
             state.nextValue = 0;
         },
         // Clear the calculator, starting over at 0
-        clear: (state, action) => { return { ...state, currentValue: 0, nextValue: 0 } },
+        clear: (state, action) => {
+            state.currentValue = 0;
+            state.nextValue = 0;
+            state.lastOp = " ";
+        },
         // Calculate final value (if no more operations are to be made)
         calculate: (state, action) => {
             state.currentValue = calcValue(state.currentValue, state.nextValue, state.lastOp);
