@@ -31,11 +31,17 @@ export const reduxCalcSlice = createSlice({
         // Concatenate the number input by the user, as a string (as number buttons are pressed). 
         incNextValue: (state, action) => {
             let nextVal = state.nextValue;
-            // Remove initial zero value when starting to type numbers
+            // Remove initial zero value when starting to type numbers, unless its a decimal value.
             if ((nextVal == "0") && (action.payload != ".")) {
                 nextVal = "";
             }
-            state.nextValue = nextVal + action.payload;
+            // negative value toggle.
+            if (action.payload == "-") {
+                state.nextValue = nextVal.includes("-") ? nextVal.slice(1) : action.payload + nextVal;
+            }
+            else {
+                state.nextValue = nextVal + action.payload;
+            }
         },
         calcAdd: (state, action) => {
             state.currentValue = calcValue(state.currentValue, state.nextValue, state.lastOp);
