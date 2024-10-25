@@ -15,7 +15,7 @@ export default function ReduxCalcNumpad() {
     return (
         <div className="calc-numpad" onClick={onButtonPress}>
             {
-                [7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((btn) => <button key={btn} value={btn}>{btn}</button>)
+                [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "."].map((btn) => <button key={btn} value={btn}>{btn}</button>)
             }
         </div>
     );

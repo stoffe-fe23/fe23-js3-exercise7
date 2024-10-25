@@ -11,7 +11,8 @@ function calcValue(valueA, valueB, operation) {
     valueA = Number(valueA);
     valueB = Number(valueB);
 
-    if (valueA == 0)
+    // First current value
+    if ((valueA == 0) && (operation == " "))
         return valueB;
 
     switch (operation) {
@@ -30,8 +31,8 @@ export const reduxCalcSlice = createSlice({
         // Concatenate the number input by the user, as a string (as number buttons are pressed). 
         incNextValue: (state, action) => {
             let nextVal = state.nextValue;
-            // Remove initial value when starting to type numbers
-            if (nextVal == "0") {
+            // Remove initial zero value when starting to type numbers
+            if ((nextVal == "0") && (action.payload != ".")) {
                 nextVal = "";
             }
             state.nextValue = nextVal + action.payload;
