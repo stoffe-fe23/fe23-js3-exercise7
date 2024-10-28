@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectNextValue, selectLastOp } from "./slice/reduxCalcSlice";
 
 
+// Component for calculator user input display (next value)
 export default function ReduxCalcNextValue() {
 
     const nextValue = useSelector(selectNextValue);

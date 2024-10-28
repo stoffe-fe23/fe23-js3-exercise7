@@ -5,11 +5,12 @@ import store from './store/reduxCalcStore';
 
 function App() {
 
-  return (
-    <Provider store={store}>
-      <ReduxCalc />
-    </Provider>
-  );
+    // Set up reduxCalc redux provider
+    return (
+        <Provider store={store}>
+            <ReduxCalc />
+        </Provider>
+    );
 }
 
 export default App;

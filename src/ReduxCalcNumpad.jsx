@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { incNextValue } from "./slice/reduxCalcSlice";
 
 
+// Component for calculator number buttons.
 export default function ReduxCalcNumpad() {
 
     const dispatch = useDispatch();

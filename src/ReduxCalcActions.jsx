@@ -1,32 +1,26 @@
 import { useDispatch } from "react-redux";
 import { calcAdd, calcDivide, calcMultiply, calcSubtract, clear, calculate } from "./slice/reduxCalcSlice";
 
-
+// Component for calculator action/operation buttons
 export default function ReduxCalcActions() {
     const dispatch = useDispatch();
 
     function onButtonPress(evt) {
         if (evt.target.tagName == "BUTTON") {
             switch (evt.target.value) {
-                case "add": dispatch(calcAdd()); break;
-                case "subtract": dispatch(calcSubtract()); break;
-                case "multiply": dispatch(calcMultiply()); break;
-                case "divide": dispatch(calcDivide()); break;
-                case "clear": dispatch(clear()); break;
-                case "calculate": dispatch(calculate()); break;
+                case "+": dispatch(calcAdd()); break;
+                case "-": dispatch(calcSubtract()); break;
+                case "*": dispatch(calcMultiply()); break;
+                case "/": dispatch(calcDivide()); break;
+                case "C": dispatch(clear()); break;
+                case "=": dispatch(calculate()); break;
             }
         }
     }
 
     return (
         <div className="calc-actions" onClick={onButtonPress}>
-            <button value="clear">C</button>
-            <button value="add">+</button>
-            <button value="subtract">-</button>
-            <button value="multiply">*</button>
-            <button value="divide">/</button>
-            <button value="calculate">=</button>
-
+            {["C", "+", "-", "*", "/", "="].map((btn) => <button key={btn} value={btn}>{btn}</button>)}
         </div>
     );
 }

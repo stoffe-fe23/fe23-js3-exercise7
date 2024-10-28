@@ -4,7 +4,7 @@ import { selectCurrentValue } from "./slice/reduxCalcSlice";
 import ReduxCalcNumpad from "./ReduxCalcNumpad";
 import ReduxCalcActions from "./ReduxCalcActions";
 
-
+// Component for calculator main panel
 export default function ReduxCalc() {
     const currValue = useSelector(selectCurrentValue);
 
