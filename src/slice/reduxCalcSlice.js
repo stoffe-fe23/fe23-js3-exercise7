@@ -6,22 +6,22 @@ const initialState = {
     lastOp: " "
 }
 
-// Support function for the actions below... 
-function calcValue(valueA, valueB, operation) {
-    valueA = Number(valueA);
-    valueB = Number(valueB);
+// Support function for the actions below... calculate!
+function calcValue(curr, next, operation) {
+    curr = Number(curr);
+    next = Number(next);
 
     // First current value
-    if ((valueA == 0) && (operation == " "))
-        return valueB;
+    if ((curr == 0) && (operation == " "))
+        return next;
 
     switch (operation) {
-        case "+": return valueA + valueB; break;
-        case "-": return valueA - valueB; break;
-        case "*": return valueA * valueB; break;
-        case "/": return valueA / valueB; break;
+        case "+": return curr + next;
+        case "-": return curr - next;
+        case "*": return curr * next;
+        case "/": return curr / next;
     }
-    return valueA;
+    return curr;
 }
 
 export const reduxCalcSlice = createSlice({
